@@ -10,7 +10,6 @@ import styled from "styled-components"
 
 const Container = styled.div`
 margin: 0 auto;
-margin-top: 80px;
 `
 
 const Layout = ({ children, noFooter }) => {

@@ -6,6 +6,9 @@ import LogoBase from '../images/logo-base-letters.svg'
 import { main, soft } from './colors'
 import { Dropdown } from 'semantic-ui-react'
 
+import { slide as BurgerMenu } from 'react-burger-menu'
+import './burger-menu.css'
+
 const HeaderContainer = styled.header`
 background-color: ${soft};
 backdrop-filter: blur(12px);
@@ -47,14 +50,22 @@ const MenuItem = styled(Link)`
 color: black;
 text-decoration: none;
 user-select: none;
-margin-left: 32px;
+margin-right: 32px;
 transition: .5s;
+height: 80px;
+line-height: 80px;
 font-weight: 100;
 font-size: 20px;
 cursor: pointer;
+
+@media only screen and (min-width: 760px){
+  font-size: 24px;
+}
+
 :hover {
   color: ${main};
 }
+
 `
 
 const OnlyDesktop = styled.div`
@@ -70,7 +81,12 @@ const OnlyMobile = styled.div`
 `
 
 const DropdownCustom = styled(Dropdown)`
-margin-left: 32px;
+margin-right: 32px;
+height: 80px;
+line-height: 80px;
+img {
+  height: 80px;
+}
 `
 
 const Header = () => {
@@ -96,21 +112,33 @@ const Header = () => {
     },
   ]
 
+  var options = [
+    <MenuItem to="#home">Home</MenuItem>,
+    <MenuItem to="#about">About</MenuItem>,
+    <MenuItem to="#features">Features</MenuItem>,
+    <MenuItem to="#features">Images</MenuItem>,
+    <MenuItem to="#contact">Contact</MenuItem>,
+    <DropdownCustom inline defaultValue={languages[0].value} options={languages}/>
+  ]
+
   return (
-    <HeaderContainer>
-      <ItemsContainer>
-        <Link to="/"><Logo src={LogoBase} /></Link>
-        <Menu>
-          <OnlyDesktop><MenuItem to="#home">Home</MenuItem></OnlyDesktop>
-          <OnlyDesktop><MenuItem to="#about">About</MenuItem></OnlyDesktop>
-          <OnlyDesktop><MenuItem to="#features">Features</MenuItem></OnlyDesktop>
-          <OnlyDesktop><MenuItem to="#features">Images</MenuItem></OnlyDesktop>
-          <OnlyDesktop><MenuItem to="#contact">Contact</MenuItem></OnlyDesktop>
-          <OnlyDesktop><DropdownCustom inline defaultValue={languages[0].value} options={languages}/></OnlyDesktop>
-          <OnlyMobile></OnlyMobile>
-        </Menu>
-      </ItemsContainer>
-    </HeaderContainer>
+    <>
+      <OnlyMobile>
+        <BurgerMenu right>
+          { options }
+        </BurgerMenu>
+      </OnlyMobile>
+      <OnlyDesktop>
+        <HeaderContainer>
+          <ItemsContainer>
+            <Link to="/"><Logo src={LogoBase} /></Link>
+            <Menu>
+              { options }
+            </Menu>
+          </ItemsContainer>
+        </HeaderContainer>
+      </OnlyDesktop>
+    </>
   )
 }
 
