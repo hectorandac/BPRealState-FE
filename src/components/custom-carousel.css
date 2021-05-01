@@ -1,0 +1,81 @@
+.carousel-icon-prev {
+    position: absolute;
+    right: 42px;
+    color: orange;
+    font-size: 48px;
+    margin: auto 0;
+    z-index: 20;
+    top: calc(55% + 0px);
+}
+
+.carousel-icon-next {
+    position: absolute;
+    right: 42px;
+    color: orange;
+    font-size: 48px;
+    margin: auto 0;
+    z-index: 20;
+    top: calc(55% + 56px);
+}
+
+.carousel-icon {
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.carousel-icon:hover {
+    background-color: rgba(253, 205, 145, 0.5);
+}
+
+.slick-dots {
+    position: absolute;
+    right: 60px;
+    left: auto;
+    width: 24px;
+    top: calc(55% - 180px);
+}
+
+.slick-dots ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.slick-dots li {
+    margin-bottom: 10px;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+}
+
+.slick-active button::before {
+    opacity: 1 !important;
+    color: orange !important;
+}
+
+.slick-dots li button:before {
+    color: orange !important;
+}
+
+.slick-dots li button {
+    transition: 0.5s;
+}
+
+.slick-active button::after {
+    content: '◯';
+    font-size: 24px;
+    font-family: 'slick';
+    line-height: 24px;
+    position: absolute;
+    top: -8px;
+    left: -3.5px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: orange;
+}
+
+.slick-vertical .slick-slide {
+    border: none;
+}
